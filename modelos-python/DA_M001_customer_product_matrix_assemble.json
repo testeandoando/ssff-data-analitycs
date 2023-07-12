@@ -1,0 +1,41 @@
+{
+  "name" : "DA_M001_customer_product_matrix_assemble",
+  "description" : "",
+  "role" : "arn:aws:iam::318227624425:role/AWSGlueServiceRole-Studio",
+  "executionProperty" : {
+    "maxConcurrentRuns" : 1
+  },
+  "command" : {
+    "name" : "glueetl",
+    "scriptLocation" : "s3://ssff-data-analytics/modelos/jobs_glue/scripts_glue/DA_M001_customer_product_matrix_assemble.py",
+    "pythonVersion" : "3"
+  },
+  "defaultArguments" : {
+    "--enable-metrics" : "true",
+    "--enable-spark-ui" : "true",
+    "--spark-event-logs-path" : "s3://ssff-data-analytics/modelos/jobs_glue/logs_glue_jobs/",
+    "--enable-job-insights" : "false",
+    "--enable-glue-datacatalog" : "true",
+    "--enable-continuous-cloudwatch-log" : "true",
+    "--job-bookmark-option" : "job-bookmark-enable",
+    "--job-language" : "python",
+    "--TempDir" : "s3://ssff-data-analytics/modelos/jobs_glue/temp_glue_jobs/"
+  },
+  "maxRetries" : 0,
+  "allocatedCapacity" : 10,
+  "timeout" : 120,
+  "maxCapacity" : 10.0,
+  "notificationProperty" : {
+    "notifyDelayAfter" : 5
+  },
+  "glueVersion" : "4.0",
+  "numberOfWorkers" : 10,
+  "workerType" : "G.1X",
+  "executionClass" : "STANDARD",
+  "sourceControlDetails" : {
+    "provider" : "GITHUB",
+    "repository" : "ssff-data-analitycs",
+    "branch" : "main",
+    "folder" : "modelos-python"
+  }
+}
